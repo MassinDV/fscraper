@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer require google/apiclient:^2.0
-          composer require simple-html-dom/simple-html-dom
+          composer require simplehtmldom/simplehtmldom
 
       - name: Decode Google credentials
         run: |
