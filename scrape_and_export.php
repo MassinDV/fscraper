@@ -1,13 +1,17 @@
-
 <?php
-require_once 'vendor/autoload.php'; // Include Google API Client
+require_once 'vendor/autoload.php'; // Include Google API Client and simple_html_dom
+
+use simplehtmldom\HtmlWeb;
 
 // Function to scrape URLs from the category page
 function scrapeUrlsFromCategory($categoryUrl) {
     $urls = [];
 
+    // Create a new HtmlWeb client
+    $client = new HtmlWeb();
+
     // Get the HTML content of the category page
-    $html = file_get_html($categoryUrl);
+    $html = $client->load($categoryUrl);
 
     if (!$html) {
         echo "Failed to load the HTML content from the URL: $categoryUrl\n";
