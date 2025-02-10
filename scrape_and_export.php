@@ -1,5 +1,5 @@
 <?php
-require_once 'vendor/autoload.php'; // Include Google API Client and simple_html_dom
+require_once 'vendor/autoload.php'; // Include Google API Client and simplehtmldom
 
 use simplehtmldom\HtmlWeb;
 
