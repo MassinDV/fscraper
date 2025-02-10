@@ -1,0 +1,6 @@
+{
+    "require": {
+        "google/apiclient": "^2.0",
+        "simplehtmldom/simplehtmldom": "^2.0"
+    }
+}
