@@ -1,0 +1,31 @@
+name: Scrape and Export to Google Sheets
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  scrape-and-export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Install dependencies
+        run: |
+          composer require google/apiclient:^2.0
+          composer require simple-html-dom/simple-html-dom
+
+      - name: Decode Google credentials
+        run: |
+          echo "${{ secrets.GOOGLE_CREDENTIALS }}" | base64 --decode > credentials.json
+
+      - name: Run PHP script
+        run: php scrape_and_export.php
